@@ -49,13 +49,16 @@ namespace HoSik
       public ESceneType         currentSceneType         = ESceneType.Intro;
       public ETrafficLightState currentTrafficLightState = ETrafficLightState.Green;
 
-
-      private void Update()
+      public void SceneSwapInitialize(ESceneType sceneType)
       {
-         if (Input.GetKeyDown(KeyCode.Alpha1))
-         {
-            SceneManager.LoadScene("Scene3");
-         }
+         currentSceneType = sceneType;
+         UIManager.Instance.InitializeUIForEachScene(currentSceneType);
+      }
+
+      private void Start()
+      {
+         //DEBUG
+         SceneSwapInitialize(ESceneType.Road);
       }
    }
 }
