@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Management;
 
 namespace HoSik
 {
@@ -33,12 +35,13 @@ namespace HoSik
          if (_instance == null)
          {
             _instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
          }
          else
          {
             Destroy(this.gameObject);
          }
+         
       }
 
       [Header("Controllers")] 
@@ -54,6 +57,8 @@ namespace HoSik
       public GameObject player;
 
       public bool hasReachedBusStation = false;
+
+      public QuestData[] quests = new QuestData[7];
       
       public void SceneSwapInitialize(ESceneType sceneType)
       {
@@ -71,6 +76,12 @@ namespace HoSik
       {
          player.transform.localPosition = defaultPosition.position;
          player.transform.localRotation = defaultPosition.rotation;
+      }
+
+      public void Object2Quest_SignalTunnel(int questID)
+      {
+         quests[questID].isQuestCompleted = true;
+         quests[questID].StartQuest(questID);
       }
    }
 }

@@ -18,18 +18,20 @@ namespace HoSik
         public string[] obstacleHitScripts = new string[4];
         public string   vehicleHitScript;
 
-        private bool _canShowScript = true;
+        private bool _canDisplayMessage = true;
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
+            if (!_canDisplayMessage)
+            {
+                return;
+            }
+            
             GameObject goOther = hit.gameObject;
+            
             if (goOther.CompareTag("Npc"))
             {
-                if (!_canShowScript)
-                {
-                    return;
-                }
-
+                goOther.GetComponent<NpcSimpleMover>().PlayAudio();
                 StartCoroutine(CoShowText());
             }
             else if (goOther.CompareTag("Bicycle"))
@@ -50,11 +52,11 @@ namespace HoSik
 
         IEnumerator CoShowText()
         {
-            _canShowScript = false;
+            _canDisplayMessage = false;
             int randomIdx = Random.Range(0, 4);
             UIManager.Instance.SetGuideUpdateRect(npcHitScripts[randomIdx]);
-            yield return new WaitForSeconds(3.0f);
-            _canShowScript = true;
+            yield return new WaitForSeconds(0.5f);
+            _canDisplayMessage = true;
         }
         
     }

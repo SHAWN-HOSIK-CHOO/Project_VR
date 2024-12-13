@@ -12,6 +12,18 @@ namespace HoSik
         public bool isTimeOver = false;
 
         private Coroutine _currentCoroutine;
+
+        public void InitTimer()
+        {
+            if (_currentCoroutine != null)
+            {
+                StopCoroutine(_currentCoroutine);
+            }
+
+            UIManager.Instance.timer.SetActive(false);
+            _currentTime = 0f;
+            isTimeOver   = false;
+        }
         
         public void StartTimer()
         {
