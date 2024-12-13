@@ -6718,8 +6718,8 @@ MonoBehaviour:
   currentInteractionType: 0
   currentSceneType: 0
   currentTrafficLightState: 1
-  roadSceneDefaultPosition: {x: 0, y: 0, z: 0.35}
-  player: {fileID: 962675947}
+  defaultPosition: {fileID: 1636686145}
+  player: {fileID: 386895148}
   hasReachedBusStation: 0
 --- !u!4 &1548142873
 Transform:
@@ -6920,6 +6920,37 @@ MonoBehaviour:
   questGuideScript: "\uB098 : \uACF5\uC0AC\uAC00 \uC788\uC5B4\uC11C \uC5F0\uACB0\uC774
     \uB04A\uAE34 \uBAA8\uC591\uC774\uC57C, \uB3CC\uC544\uC11C \uAC00\uC790"
   timer: {fileID: 976052760}
+--- !u!1 &1636686144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636686145}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1636686145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636686144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.1385603, z: 2.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1661106945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8357,3 +8388,4 @@ SceneRoots:
   - {fileID: 119959493}
   - {fileID: 656319735}
   - {fileID: 1377701442}
+  - {fileID: 1636686145}

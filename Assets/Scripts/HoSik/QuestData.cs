@@ -49,7 +49,7 @@ namespace HoSik
             {
                 UIManager.Instance.SetGuideUpdateRect("나 : 버스를 놓져버렸다");
                 UIManager.Instance.SetQuestUpdateRect("목표 실패");
-                InteractionManager.Instance.TeleportCharacter(InteractionManager.Instance.roadSceneDefaultPosition);
+                InteractionManager.Instance.TeleportCharacter();
             }
         }
     }

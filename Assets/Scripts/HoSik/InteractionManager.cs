@@ -49,7 +49,7 @@ namespace HoSik
       public ESceneType         currentSceneType         = ESceneType.Intro;
       public ETrafficLightState currentTrafficLightState = ETrafficLightState.Green;
 
-      public Vector3 roadSceneDefaultPosition;
+      public Transform defaultPosition;
 
       public GameObject player;
 
@@ -67,9 +67,10 @@ namespace HoSik
          SceneSwapInitialize(ESceneType.Road);
       }
 
-      public void TeleportCharacter(Vector3 pos)
+      public void TeleportCharacter()
       {
-         player.transform.position = pos;
+         player.transform.localPosition = defaultPosition.position;
+         player.transform.localRotation = defaultPosition.rotation;
       }
    }
 }
