@@ -9,13 +9,11 @@ namespace HoSik
         public  float targetTime   = 180f;
         private float _currentTime = 0f;
 
-        private void Start()
+        public bool isTimeOver = false;
+        
+        public void StartTimer()
         {
-            StartTimer();
-        }
-
-        private void StartTimer()
-        {
+            UIManager.Instance.timer.SetActive(true);
             StartCoroutine(CoStartTimer());
         }
 
@@ -38,6 +36,7 @@ namespace HoSik
             }
 
             _currentTime = 0f;
+            isTimeOver   = true;
             UIManager.Instance.SetTimerText(0); 
         }
     }

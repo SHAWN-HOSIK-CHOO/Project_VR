@@ -41,6 +41,11 @@ namespace HoSik
         {
             for (int i = 0; i < 4; i++)
             {
+                if (pfCarObjects[i] == null)
+                {
+                    continue;
+                }
+                
                 GameObject pfCar = Instantiate(pfCarObjects[i], carSpawnPositions[i].transform.position,
                                                carSpawnPositions[i].transform.rotation);
 

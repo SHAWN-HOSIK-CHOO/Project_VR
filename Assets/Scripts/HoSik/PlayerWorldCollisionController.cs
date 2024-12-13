@@ -34,16 +34,16 @@ namespace HoSik
             }
             else if (goOther.CompareTag("Bicycle"))
             {
-                UIManager.Instance.SetGuideText(bicycleHitScript);
+                UIManager.Instance.SetGuideUpdateRect(bicycleHitScript);
             }
             else if (goOther.CompareTag("Obstacle"))
             {
                 int randomIdx = Random.Range(0, 4);
-                UIManager.Instance.SetGuideText(obstacleHitScripts[0]);
+                UIManager.Instance.SetGuideUpdateRect(obstacleHitScripts[0]);
             }
             else if (goOther.CompareTag("Vehicle"))
             {
-                UIManager.Instance.SetGuideText(vehicleHitScript);
+                UIManager.Instance.SetGuideUpdateRect(vehicleHitScript);
             }
         }
 
@@ -52,7 +52,7 @@ namespace HoSik
         {
             _canShowScript = false;
             int randomIdx = Random.Range(0, 4);
-            UIManager.Instance.SetGuideText(npcHitScripts[randomIdx]);
+            UIManager.Instance.SetGuideUpdateRect(npcHitScripts[randomIdx]);
             yield return new WaitForSeconds(3.0f);
             _canShowScript = true;
         }

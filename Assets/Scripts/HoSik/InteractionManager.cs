@@ -33,7 +33,7 @@ namespace HoSik
          if (_instance == null)
          {
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
          }
          else
          {
@@ -49,6 +49,12 @@ namespace HoSik
       public ESceneType         currentSceneType         = ESceneType.Intro;
       public ETrafficLightState currentTrafficLightState = ETrafficLightState.Green;
 
+      public Vector3 roadSceneDefaultPosition;
+
+      public GameObject player;
+
+      public bool hasReachedBusStation = false;
+      
       public void SceneSwapInitialize(ESceneType sceneType)
       {
          currentSceneType = sceneType;
@@ -59,6 +65,11 @@ namespace HoSik
       {
          //DEBUG
          SceneSwapInitialize(ESceneType.Road);
+      }
+
+      public void TeleportCharacter(Vector3 pos)
+      {
+         player.transform.position = pos;
       }
    }
 }

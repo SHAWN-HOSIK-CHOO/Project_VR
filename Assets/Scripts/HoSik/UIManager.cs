@@ -13,13 +13,17 @@ namespace HoSik
         private static UIManager _instance = null;
         public static  UIManager Instance => _instance == null ? null : _instance;
 
-        public TMP_Text guideText;
+        public  RectTransform guideUpdateRect;
+        public  TMP_Text      guideText;
+        //private bool          _isMessageOn = false;
+        private Coroutine     _messageCoroutine;
 
         public GameObject walkingAnimation;
 
         public GameObject soundAnimation;
 
-        public TMP_Text timerText;
+        public GameObject timer;
+        public TMP_Text   timerText;
 
         public RectTransform questUpdateRect;
         public TMP_Text      questUpdateRectText;
@@ -31,7 +35,7 @@ namespace HoSik
             if (_instance == null)
             {
                 _instance = this;
-                DontDestroyOnLoad(this.gameObject);
+                //DontDestroyOnLoad(this.gameObject);
             }
             else
             {
@@ -39,7 +43,7 @@ namespace HoSik
             }
         }
 
-        public void SetGuideText(string txt)
+        private void SetGuideText(string txt)
         {
             guideText.text = txt;
         }
@@ -58,10 +62,22 @@ namespace HoSik
         {
             questUpdateRectText.text = txt;
             SetQuestInfoText(txt);
-            StartCoroutine(CoQuestUpdateAnimation(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(2.5f, 2.5f, 1.0f), 2.5f));
+            //StartCoroutine(CoQuestUpdateAnimation(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(1.6f, 1.6f, 1.0f), 2.5f));
         }
 
-        public void SetQuestInfoText(string txt)
+        public void SetGuideUpdateRect(string txt)
+        {
+            if (_messageCoroutine != null)
+            {
+                StopCoroutine(_messageCoroutine);
+                guideUpdateRect.gameObject.SetActive(false);
+            }
+            
+            SetGuideText(txt);
+            _messageCoroutine = StartCoroutine(CoGuideUpdateAnimation( 2.5f));
+        }
+
+        private void SetQuestInfoText(string txt)
         {
             questInfoText.text = txt;
         }
@@ -69,6 +85,8 @@ namespace HoSik
         public void InitializeUIForEachScene(ESceneType sceneType)
         {
             questUpdateRect.gameObject.SetActive(false);
+            guideUpdateRect.gameObject.SetActive(false);
+            timer.SetActive(false);
             
             switch (sceneType)
             {
@@ -116,6 +134,22 @@ namespace HoSik
             questUpdateRect.localScale = startScale;
             yield return new WaitForSeconds(0.3f);
             questUpdateRect.gameObject.SetActive(false);
+        }
+        
+        IEnumerator CoGuideUpdateAnimation(float duration = 2.0f)
+        {
+            //_isMessageOn = true;
+            guideUpdateRect.gameObject.SetActive(true);
+            float elapsedTime  = 0f;
+            
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            //_isMessageOn = false;
+            guideUpdateRect.gameObject.SetActive(false);
         }
     }
 }

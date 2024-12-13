@@ -10,7 +10,7 @@ namespace HoSik
         {
             if (hit.gameObject.CompareTag("Player"))
             {
-                UIManager.Instance.SetGuideText(guideText);
+                UIManager.Instance.SetGuideUpdateRect(guideText);
             }
         }
 
@@ -18,7 +18,7 @@ namespace HoSik
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                UIManager.Instance.SetGuideText(guideText);
+                UIManager.Instance.SetGuideUpdateRect(guideText);
             }
         }
     }
