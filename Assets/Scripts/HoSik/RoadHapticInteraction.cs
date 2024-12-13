@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace HoSik
 {
@@ -56,12 +57,14 @@ namespace HoSik
             {
                 InteractionManager.Instance.rightController.SendHapticImpulse(0.8f, 0.5f);
                 InteractionManager.Instance.leftController.SendHapticImpulse(0.8f, 0.5f);
+                UIManager.Instance.SetWalkingAnimationColor(Color.green);
                 Debug.Log("Point Block Haptic!");
             }
             else if (blockType == ERoadBlockType.LineBlock)
             {
                 InteractionManager.Instance.rightController.SendHapticImpulse(0.5f, 1f);
                 InteractionManager.Instance.leftController.SendHapticImpulse(0.5f, 1f);
+                UIManager.Instance.SetWalkingAnimationColor(Color.white);
                 Debug.Log("Line Block Haptic!");
             }
         }

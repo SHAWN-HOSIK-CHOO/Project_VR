@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace HoSik
 {
@@ -18,7 +19,8 @@ namespace HoSik
         //private bool          _isMessageOn = false;
         private Coroutine     _messageCoroutine;
 
-        public GameObject walkingAnimation;
+        public  GameObject walkingAnimation;
+        private Image      _walkingAnimationImage;
 
         public GameObject soundAnimation;
 
@@ -65,6 +67,12 @@ namespace HoSik
             //StartCoroutine(CoQuestUpdateAnimation(new Vector3(1.0f, 1.0f, 1.0f), new Vector3(1.6f, 1.6f, 1.0f), 2.5f));
         }
 
+        public void SetWalkingAnimationColor(Color c)
+        {
+            _walkingAnimationImage = walkingAnimation.GetComponent<Image>();
+            _walkingAnimationImage.color = c;
+        }
+        
         public void SetGuideUpdateRect(string txt)
         {
             if (_messageCoroutine != null)

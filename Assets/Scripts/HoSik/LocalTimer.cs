@@ -10,13 +10,21 @@ namespace HoSik
         private float _currentTime = 0f;
 
         public bool isTimeOver = false;
+
+        private Coroutine _currentCoroutine;
         
         public void StartTimer()
         {
             UIManager.Instance.timer.SetActive(true);
-            StartCoroutine(CoStartTimer());
+            _currentCoroutine = StartCoroutine(CoStartTimer());
         }
 
+        public void StopTimer()
+        {
+            UIManager.Instance.timer.SetActive(false);
+            StopCoroutine(_currentCoroutine);
+        }
+        
         IEnumerator CoStartTimer()
         {
             _currentTime = targetTime;

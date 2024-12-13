@@ -34,6 +34,15 @@ namespace HoSik
             {
                 
             }
+            else if (id == 2)
+            {
+                
+            }
+            else if (id == 3)
+            {
+                InteractionManager.Instance.hasReachedBusStation = true;
+                //TODO: Load Scene
+            }
         }
 
         IEnumerator CoQuest0Timer()
